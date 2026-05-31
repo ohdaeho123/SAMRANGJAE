@@ -1,0 +1,919 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>삼랑재 | 삼랑진 감성 숙소</title>
+  <meta name="description" content="삼랑진 부근에 자리한 감성 숙소 삼랑재. 객실, 스페셜, 주변 여행, 예약 안내를 한눈에 확인하세요." />
+  <style>
+    @font-face {
+      font-family: 'SeoulNotice';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2505-1@1.0/SeoulAlrimTTF-Medium.woff2') format('woff2');
+      font-weight: 500;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'SeoulNotice';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2505-1@1.0/SeoulAlrimTTF-Bold.woff2') format('woff2');
+      font-weight: 700;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'SeoulNotice';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2505-1@1.0/SeoulAlrimTTF-ExtraBold.woff2') format('woff2');
+      font-weight: 800;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'SeoulNotice';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2505-1@1.0/SeoulAlrimTTF-Heavy.woff2') format('woff2');
+      font-weight: 900;
+      font-display: swap;
+    }
+
+    :root {
+      --ink: #22211f;
+      --soft-ink: #5f5a53;
+      --line: #e2ddd5;
+      --paper: #faf7f1;
+      --white: #fff;
+      --green: #2f5d4a;
+      --sage: #dfe8de;
+      --clay: #a65b3d;
+      --gold: #c49b55;
+      --sand: #efe5d5;
+      --shadow: 0 18px 45px rgba(28, 25, 21, .13);
+      font-family: "SeoulNotice", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .topbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 30;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      padding: 18px clamp(18px, 4.5vw, 70px);
+      background: rgba(255, 255, 255, .9);
+      border-bottom: 1px solid rgba(34, 33, 31, .08);
+      backdrop-filter: blur(16px);
+    }
+
+    .logo {
+      position: relative;
+      display: block;
+      width: clamp(76px, 8vw, 96px);
+      height: clamp(76px, 8vw, 96px);
+      min-width: 76px;
+      overflow: hidden;
+    }
+
+    .logo img {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transform: translate(-50%, -50%);
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: clamp(12px, 2.2vw, 30px);
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: .07em;
+    }
+
+    .main-nav a {
+      padding: 8px 0;
+      color: #37332e;
+      border-bottom: 2px solid transparent;
+    }
+
+    .main-nav a:hover {
+      border-color: var(--green);
+    }
+
+    .hero {
+      min-height: 100svh;
+      position: relative;
+      display: grid;
+      align-items: end;
+      color: #fff;
+      background:
+        linear-gradient(to bottom, rgba(12, 13, 10, .12), rgba(12, 13, 10, .72)),
+        url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2400&q=84") center/cover;
+    }
+
+    .hero-content {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 150px 0 100px;
+    }
+
+    .hero-label {
+      margin: 0 0 18px;
+      font-size: 15px;
+      font-weight: 900;
+      letter-spacing: .18em;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(58px, 12vw, 150px);
+      line-height: .92;
+      letter-spacing: 0;
+    }
+
+    .hero-copy {
+      max-width: 760px;
+      margin: 26px 0 0;
+      font-size: clamp(20px, 2.8vw, 34px);
+      font-weight: 700;
+      word-break: keep-all;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 34px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 20px;
+      border: 1px solid rgba(255, 255, 255, .65);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 900;
+      background: rgba(255, 255, 255, .12);
+      backdrop-filter: blur(10px);
+    }
+
+    .btn.primary {
+      border-color: var(--gold);
+      background: var(--gold);
+      color: #1e1b17;
+    }
+
+    section {
+      padding: 96px clamp(20px, 5vw, 76px);
+    }
+
+    .wrap {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 1fr minmax(240px, 390px);
+      gap: 36px;
+      align-items: end;
+      margin-bottom: 42px;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--clay);
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: .14em;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(34px, 5.2vw, 68px);
+      line-height: 1.04;
+      letter-spacing: 0;
+      word-break: keep-all;
+    }
+
+    .lead {
+      margin: 0;
+      color: var(--soft-ink);
+      font-size: 17px;
+      word-break: keep-all;
+    }
+
+    .welcome-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .welcome-photo {
+      min-height: 520px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .welcome-panel {
+      display: grid;
+      align-content: center;
+      gap: 24px;
+      padding: clamp(28px, 5vw, 56px);
+      background: var(--white);
+      border: 1px solid var(--line);
+    }
+
+    .welcome-links {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .mini-link {
+      padding: 18px 12px;
+      text-align: center;
+      background: var(--sage);
+      color: var(--green);
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .feature-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .feature {
+      min-height: 210px;
+      padding: 28px;
+      background: #fff;
+    }
+
+    .feature-num {
+      display: block;
+      margin-bottom: 28px;
+      color: var(--gold);
+      font-size: 46px;
+      font-weight: 300;
+      line-height: 1;
+    }
+
+    .feature h3 {
+      margin: 0 0 10px;
+      font-size: 23px;
+      line-height: 1.2;
+      word-break: keep-all;
+    }
+
+    .feature p {
+      margin: 0;
+      color: var(--soft-ink);
+      word-break: keep-all;
+    }
+
+    .rooms {
+      background: #fff;
+    }
+
+    .room-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .room-card {
+      display: grid;
+      grid-template-rows: 275px auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--white);
+      box-shadow: 0 10px 28px rgba(34, 30, 24, .08);
+    }
+
+    .room-image {
+      position: relative;
+    }
+
+    .room-badge {
+      position: absolute;
+      left: 16px;
+      bottom: 16px;
+      padding: 8px 12px;
+      background: rgba(34, 33, 31, .82);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .room-body {
+      padding: 24px;
+    }
+
+    .room-body h3 {
+      margin: 0 0 6px;
+      font-size: 26px;
+    }
+
+    .room-body p {
+      margin: 0 0 16px;
+      color: var(--soft-ink);
+      word-break: keep-all;
+    }
+
+    .specs {
+      display: grid;
+      gap: 8px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      color: #4f4a43;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .special {
+      background: var(--green);
+      color: #fff;
+    }
+
+    .special .eyebrow,
+    .special .lead {
+      color: rgba(255, 255, 255, .72);
+    }
+
+    .special-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .special-card {
+      display: grid;
+      grid-template-rows: 190px auto;
+      overflow: hidden;
+      background: rgba(255, 255, 255, .08);
+      border: 1px solid rgba(255, 255, 255, .16);
+      border-radius: 8px;
+    }
+
+    .special-card div {
+      padding: 20px;
+    }
+
+    .special-card h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }
+
+    .special-card p {
+      margin: 0;
+      color: rgba(255, 255, 255, .72);
+      word-break: keep-all;
+    }
+
+    .tour-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .tour-card {
+      display: grid;
+      grid-template-rows: 210px auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .tour-card div {
+      padding: 20px;
+    }
+
+    .tour-card span {
+      color: var(--clay);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .tour-card h3 {
+      margin: 6px 0 8px;
+      font-size: 21px;
+    }
+
+    .tour-card p {
+      margin: 0;
+      color: var(--soft-ink);
+      word-break: keep-all;
+    }
+
+    .faq {
+      background: var(--sand);
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    details {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    summary {
+      cursor: pointer;
+      padding: 20px 22px;
+      font-size: 18px;
+      font-weight: 900;
+      list-style: none;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    details p {
+      margin: 0;
+      padding: 0 22px 22px;
+      color: var(--soft-ink);
+      word-break: keep-all;
+    }
+
+    .reservation {
+      background: #171614;
+      color: #fff;
+    }
+
+    .reservation .eyebrow,
+    .reservation .lead {
+      color: rgba(255, 255, 255, .68);
+    }
+
+    .reservation-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .info-box {
+      padding: 28px;
+      background: rgba(255, 255, 255, .07);
+      border: 1px solid rgba(255, 255, 255, .14);
+      border-radius: 8px;
+    }
+
+    .info-box h3 {
+      margin: 0 0 16px;
+      font-size: 24px;
+    }
+
+    .info-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0;
+      border-top: 1px solid rgba(255, 255, 255, .12);
+    }
+
+    .info-line span {
+      color: rgba(255, 255, 255, .6);
+      font-weight: 800;
+    }
+
+    .info-line b {
+      text-align: right;
+    }
+
+    .info-value {
+      text-align: right;
+    }
+
+    .kakao-chat {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #fff;
+      font-weight: 500;
+    }
+
+    .kakao-chat-button {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 0 12px;
+      background: #fee500;
+      color: #221f1f;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .notice-list {
+      margin: 0;
+      padding-left: 18px;
+      color: rgba(255, 255, 255, .72);
+    }
+
+    .notice-list li + li {
+      margin-top: 8px;
+    }
+
+    footer {
+      padding: 30px clamp(20px, 5vw, 76px);
+      background: #0d0d0c;
+      color: rgba(255, 255, 255, .58);
+      font-size: 14px;
+    }
+
+    .footer-inner {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 980px) {
+      .main-nav {
+        display: none;
+      }
+
+      .section-head,
+      .welcome-grid,
+      .reservation-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .room-grid,
+      .tour-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .special-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .topbar {
+        padding: 10px 16px;
+      }
+
+      .logo {
+        width: 58px;
+        height: 58px;
+        min-width: 58px;
+      }
+
+      .logo img {
+        width: 100%;
+        height: 100%;
+      }
+
+      section {
+        padding: 70px 20px;
+      }
+
+      .hero {
+        min-height: 92svh;
+      }
+
+      .hero-content {
+        padding-bottom: 76px;
+      }
+
+      .welcome-photo {
+        min-height: 330px;
+      }
+
+      .welcome-links,
+      .feature-row,
+      .room-grid,
+      .special-grid,
+      .tour-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature {
+        min-height: auto;
+      }
+
+      .room-card {
+        grid-template-rows: 230px auto;
+      }
+
+      .special-card {
+        grid-template-rows: 180px auto;
+      }
+
+      .info-line {
+        display: grid;
+      }
+
+      .info-line b {
+        text-align: left;
+      }
+
+      .info-value {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="logo" href="#welcome" aria-label="삼랑재 홈">
+      <img src="assets/samrangjae-logo.png" alt="삼랑재" />
+    </a>
+    <nav class="main-nav" aria-label="주요 메뉴">
+      <a href="#welcome">WELCOME</a>
+      <a href="#pension">PENSION</a>
+      <a href="#special">SPECIAL</a>
+      <a href="#tour">TOUR</a>
+      <a href="#reservation">RESERVATION</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="welcome" aria-label="삼랑재 첫 화면">
+      <div class="hero-content">
+        <p class="hero-label">PRIVATE STAY NEAR SAMRANGJIN</p>
+        <h1>삼랑재</h1>
+        <p class="hero-copy">삼랑진 부근, 자연과 가까운 자리에서 프라이빗하게 쉬어가는 감성 숙소</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#reservation">바로 예약 문의</a>
+          <a class="btn" href="#pension">객실 보기</a>
+          <a class="btn" href="#tour">오시는 길</a>
+        </div>
+      </div>
+    </section>
+
+    <section aria-label="삼랑재 소개">
+      <div class="wrap welcome-grid">
+        <div class="welcome-photo">
+          <img src="https://cdn.welfarehello.com/naver-blog/production/miryangsi/2023-08/223191530647/miryangsi_223191530647_2.png?f=webp&q=80&w=800" alt="따뜻한 조명의 숙소 라운지" />
+        </div>
+        <div class="welcome-panel">
+          <div>
+            <p class="eyebrow">WELCOME</p>
+            <h2>자연 가까이, 하루를 단정하게 비우는 곳</h2>
+          </div>
+          <p class="lead">삼랑재는 삼랑진 여행과 조용한 휴식을 함께 원하는 분들을 위한 숙박 공간입니다. 객실마다 필요한 편의를 갖추고, 머무는 동안 주변의 강과 마을, 계절의 분위기를 느낄 수 있도록 안내합니다.</p>
+          <div class="welcome-links">
+            <a class="mini-link" href="#pension">객실 안내</a>
+            <a class="mini-link" href="#special">스페셜</a>
+            <a class="mini-link" href="#tour">주변 여행</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pension">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">PENSION</p>
+            <h2>삼랑재에서 누리는 프라이빗한 체류</h2>
+          </div>
+          <p class="lead">레퍼런스처럼 숙소의 강점을 먼저 보여주고, 바로 객실 비교로 이어지도록 구성했습니다. 실제 보유 객실명과 사진으로 교체하면 예약 전환형 페이지가 됩니다.</p>
+        </div>
+
+        <div class="feature-row" aria-label="숙소 주요 특징">
+          <article class="feature">
+            <span class="feature-num">1</span>
+            <h3>조용한 독립형 공간</h3>
+            <p>커플, 가족, 친구 모임이 각자의 리듬으로 머물 수 있는 단정한 객실 구성입니다.</p>
+          </article>
+          <article class="feature">
+            <span class="feature-num">2</span>
+            <h3>개별 휴식 시설</h3>
+            <p>객실별 욕실, 휴식 가구, 기본 어메니티를 갖춰 짧은 여행도 편안하게 준비합니다.</p>
+          </article>
+          <article class="feature">
+            <span class="feature-num">3</span>
+            <h3>삼랑진 여행 동선</h3>
+            <p>삼랑진역 권역, 강변 산책, 지역 카페와 식당을 함께 둘러보기 좋은 위치입니다.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="rooms" aria-label="객실 목록">
+      <div class="wrap room-grid">
+        <article class="room-card">
+          <div class="room-image">
+            <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=84" alt="퀸 침대가 있는 아늑한 객실" />
+            <span class="room-badge">COUPLE</span>
+          </div>
+          <div class="room-body">
+            <h3>스테이 101</h3>
+            <p>둘이 머물기 좋은 기본 객실. 조용한 밤과 가벼운 아침을 위한 구성입니다.</p>
+            <div class="specs">
+              <span>기준 2인 / 최대 2인</span>
+              <span>퀸 침대 / 개별 욕실 / Wi-Fi</span>
+              <span>자세히 보기 · 예약 문의</span>
+            </div>
+          </div>
+        </article>
+        <article class="room-card">
+          <div class="room-image">
+            <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1200&q=84" alt="넓은 창이 있는 객실" />
+            <span class="room-badge">FAMILY</span>
+          </div>
+          <div class="room-body">
+            <h3>스테이 201</h3>
+            <p>여유 있는 창과 동선이 있는 객실. 친구, 가족 여행에 어울립니다.</p>
+            <div class="specs">
+              <span>기준 2인 / 최대 4인</span>
+              <span>라운지형 / 개별 욕실 / 냉난방</span>
+              <span>자세히 보기 · 예약 문의</span>
+            </div>
+          </div>
+        </article>
+        <article class="room-card">
+          <div class="room-image">
+            <img src="https://images.unsplash.com/photo-1601918774946-25832a4be0d6?auto=format&fit=crop&w=1200&q=84" alt="독채형 숙소의 거실 공간" />
+            <span class="room-badge">PRIVATE</span>
+          </div>
+          <div class="room-body">
+            <h3>삼랑 독채</h3>
+            <p>우리끼리 머무는 프라이빗 객실. 소규모 모임과 긴 휴식에 적합합니다.</p>
+            <div class="specs">
+              <span>기준 4인 / 최대 협의</span>
+              <span>독립 공간 / 간단 취사 / 바비큐 협의</span>
+              <span>자세히 보기 · 예약 문의</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="special" id="special">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">SPECIAL</p>
+            <h2>머무는 시간을 더 편하게 만드는 것들</h2>
+          </div>
+          <p class="lead">숙박업 페이지에서 전환에 중요한 부대시설과 서비스를 별도 섹션으로 분리했습니다.</p>
+        </div>
+        <div class="special-grid">
+          <article class="special-card">
+            <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=84" alt="따뜻한 실내 휴식 공간" />
+            <div><h3>프라이빗 라운지</h3><p>체크인 후 차분히 쉴 수 있는 객실 중심의 휴식 공간입니다.</p></div>
+          </article>
+          <article class="special-card">
+            <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=900&q=84" alt="정돈된 침구와 객실" />
+            <div><h3>쾌적한 침구</h3><p>숙면을 위한 침구와 기본 어메니티를 정돈해 제공합니다.</p></div>
+          </article>
+          <article class="special-card">
+            <img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?auto=format&fit=crop&w=900&q=84" alt="작은 주방 공간" />
+            <div><h3>간단 취사</h3><p>객실 타입에 따라 간단한 식사 준비가 가능한 구성을 안내합니다.</p></div>
+          </article>
+          <article class="special-card">
+            <img src="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=900&q=84" alt="야외 테이블과 자연 풍경" />
+            <div><h3>야외 시간</h3><p>날씨와 운영 기준에 따라 바비큐 또는 야외 휴식 이용을 안내합니다.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="tour">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">TOUR</p>
+            <h2>삼랑진 주변을 함께 즐기세요</h2>
+          </div>
+          <p class="lead">정확한 이동 시간은 주소 확정 후 업데이트하면 됩니다. 지금은 방문객이 궁금해할 주변 경험을 먼저 배치했습니다.</p>
+        </div>
+        <div class="tour-grid">
+          <article class="tour-card">
+            <img src="https://kuen.korea.ac.kr/news/photo/202311/662_1968_5050.jpeg" alt="강변 풍경" />
+            <div><span>차량 이동권</span><h3>낙동강·밀양강 산책</h3><p>물길을 따라 가볍게 걷거나 드라이브하기 좋은 삼랑진의 자연 동선입니다.</p></div>
+          </article>
+          <article class="tour-card">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=84" alt="지역 식당 분위기" />
+            <div><span>지역 추천</span><h3>카페와 식당</h3><p>체크인 전후 들를 수 있는 식당, 카페, 장보기 정보를 별도 추천으로 확장할 수 있습니다.</p></div>
+          </article>
+          <article class="tour-card">
+            <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1000&q=84" alt="기차 여행 풍경" />
+            <div><span>교통 안내</span><h3>삼랑진역 권역</h3><p>대중교통과 차량 방문 안내를 함께 제공해 초행 방문객의 불안을 줄입니다.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq" aria-label="자주 묻는 질문">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">FAQ</p>
+            <h2>예약 전 확인해 주세요</h2>
+          </div>
+          <p class="lead">체크인, 인원, 환불, 반려동물 등 문의가 반복되는 항목을 미리 보여주면 전화 응대가 줄어듭니다.</p>
+        </div>
+        <div class="faq-list">
+          <details open>
+            <summary>체크인·체크아웃 시간은 언제인가요?</summary>
+            <p>기본 체크인은 15:00 이후, 체크아웃은 11:00 이전으로 안내합니다. 청소와 점검 시간 때문에 조기 입실은 사전 확인이 필요합니다.</p>
+          </details>
+          <details>
+            <summary>예약 인원보다 더 방문해도 되나요?</summary>
+            <p>객실별 최대 인원이 정해져 있으므로 예약 전 실제 방문 인원을 알려주세요. 미예약 방문객은 운영 기준에 따라 입실이 제한될 수 있습니다.</p>
+          </details>
+          <details>
+            <summary>반려동물 동반이 가능한가요?</summary>
+            <p>반려동물 동반 가능 여부는 운영 정책 확정 후 입력하면 됩니다. 현재 페이지에는 정책을 쉽게 교체할 수 있도록 항목만 마련했습니다.</p>
+          </details>
+          <details>
+            <summary>환불 규정은 어떻게 적용되나요?</summary>
+            <p>예약 채널과 이용일 기준에 따라 환불 기준이 달라질 수 있습니다. 실제 운영 규정이 정해지면 표 형태로 추가하면 좋습니다.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="reservation" id="reservation">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">RESERVATION</p>
+            <h2>예약 및 이용 안내</h2>
+          </div>
+          <p class="lead">전화, 카카오톡, 실시간 예약 링크 등 실제 운영 채널을 연결하는 마지막 전환 영역입니다.</p>
+        </div>
+        <div class="reservation-grid">
+          <div class="info-box">
+            <h3>예약 문의</h3>
+            <div class="info-line"><span>전화 예약</span><b>010-3057-2200</b></div>
+            <div class="info-line"><span>카카오톡</span><span class="info-value kakao-chat">삼랑재 <a class="kakao-chat-button" href="http://pf.kakao.com/_xjpVGX/chat" target="_blank" rel="noopener">문의하기</a></span></div>
+            <div class="info-line"><span>체크인/아웃</span><b>입실 15:00 · 퇴실 11:00</b></div>
+            <div class="info-line"><span>주소</span><b>경남 밀양시 삼랑진</b></div>
+          </div>
+          <div class="info-box">
+            <h3>예약 시 안내사항</h3>
+            <ul class="notice-list">
+              <li>예약 전 기준 인원, 최대 인원, 추가 비용을 확인해 주세요.</li>
+              <li>입실 예정 시간이 늦어질 경우 미리 연락해 주세요.</li>
+              <li>객실 내 금연, 시설물 파손, 소음 관련 기준은 현장 안내를 따릅니다.</li>
+              <li>실시간 예약 링크, 환불표, 사업자 정보는 운영 정보 확정 후 추가합니다.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>삼랑재 Samrangjae Stay</span>
+      <span>주소 · 사업자 정보 · 예약 약관 입력 예정</span>
+    </div>
+  </footer>
+</body>
+</html>
